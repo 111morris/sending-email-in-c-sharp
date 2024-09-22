@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "F++YQU8TyPw=",
+  "dgSpecHash": "5gWoEaE4pRw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\hp\\Desktop\\programing files\\web development course\\sending-email-in-c#\\sending-email-in-c#.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\hp\\Desktop\\programing files\\web development course\\sending-email-in-c-sharp\\sending-email-in-c#.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\fluentemail.core\\3.0.2\\fluentemail.core.3.0.2.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\fluentemail.smtp\\3.0.2\\fluentemail.smtp.3.0.2.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("sending-email-in-c#")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15fc57c614d65fb2e00f4dc69d28c0180494444c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5c13c916a79e9ae2a8ed7439ad766c35a66351e")]
 [assembly: System.Reflection.AssemblyProductAttribute("sending-email-in-c#")]
 [assembly: System.Reflection.AssemblyTitleAttribute("sending-email-in-c#")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
