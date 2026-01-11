@@ -1,3 +1,10 @@
+// install depentancies 
+// dotnet add package MailKit
+// dotnet add package Microsoft.Extensions.Configuration
+// dotnet add package Microsoft.Extensions.Configuration.EnvironmentVariables
+// dotnet add package Microsoft.Extensions.Configuration.UserSecrets   # dev secrets
+// dotnet add package Polly                                             # retry
+
 using MailKit.Net.Smtp;
 using MimeKit;
 
