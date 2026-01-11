@@ -1,21 +1,27 @@
-// install depentancies 
-// dotnet add package MailKit
-// dotnet add package Microsoft.Extensions.Configuration
-// dotnet add package Microsoft.Extensions.Configuration.EnvironmentVariables
-// dotnet add package Microsoft.Extensions.Configuration.UserSecrets   # dev secrets
-// dotnet add package Polly                                             # retry
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-using MailKit.Net.Smtp;
-using MimeKit;
+var builder = Host.CreateApplicationBuilder(args);
 
-var message = new MimeMessage();
-message.From.Add(new MailboxAddress("[Your Name]", "[youraddress@gmail.com]"));
-message.To.Add(new MailboxAddress("[Recipient Name]", "[recipient@example.com]"));
-message.Subject = "[Testing Email]";
-message.Body = new TextPart("plain") { Text = "[Hello, this is a test email!]" };
+builder.Configuration
 
-using var client = new SmtpClient();
-await client.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-await client.AuthenticateAsync("[youraddress@gmail.com]", "[yourpassword]");
-await client.SendAsync(message);
-await client.DisconnectAsync(true);
+       .AddJsonFile("appsettings.json", optional: false)
+       .AddEnvironmentVariables()
+       .AddUserSecrets<Program>();   // dotnet user-secrets init
+
+builder.Services.Configure<SmtpOptions>(
+        builder.Configuration.GetSection(SmtpOptions.Section));
+builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
+builder.Services.AddLogging(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+
+using var host = builder.Build();
+
+var sender = host.Services.GetRequiredService<IEmailSender>();
+
+await sender.SendAsync(
+        toName   : "Recipient Name",
+        toAddress: "recipient@example.com",
+        subject  : "Testing Email",
+        plainText: "Hello, this is a test email!");
